@@ -38,7 +38,9 @@ body{font-family:'DM Sans','Tajawal',sans-serif}
 .lang-switch-btn{position:fixed;top:16px;z-index:60;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;border:none;font-size:18px}
 [dir="rtl"] .lang-switch-btn{left:16px}
 [dir="ltr"] .lang-switch-btn{right:16px}
-.hero-section{padding:100px 24px 48px;text-align:center}
+.hero-section{padding:80px 24px 60px;text-align:center;background:linear-gradient(135deg, rgba(42,157,143,.05) 0%, rgba(231,111,81,.03) 100%);position:relative;overflow:hidden}
+.hero-section::before{content:'';position:absolute;top:-50%;right:-50%;width:500px;height:500px;background:radial-gradient(circle, var(--c-primary)15, transparent);border-radius:50%;pointer-events:none}
+.hero-section::after{content:'';position:absolute;bottom:-30%;left:-30%;width:400px;height:400px;background:radial-gradient(circle, var(--c-accent)10, transparent);border-radius:50%;pointer-events:none}
 .nav-section-btn{display:flex;align-items:center;gap:12px;width:100%;padding:12px 20px;border:none;background:none;cursor:pointer;font-size:15px;border-radius:10px;transition:all .15s}
 .nav-section-btn:hover{background:rgba(0,0,0,.04)}
 :root{--c-primary:#2a9d8f;--c-bg:#f7f8fc;--c-surface:#ffffff;--c-text:#1e293b;--c-accent:#e76f51;--c-secondary:#264653}
@@ -47,13 +49,11 @@ body{font-family:'DM Sans','Tajawal',sans-serif}
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full" style="background:var(--c-bg);color:var(--c-text)">
-  <div class="app-wrap" id="app">
-   <!-- Hamburger --> <button class="hamburger-btn" id="menuBtn" style="background:var(--c-surface);box-shadow:0 2px 12px rgba(0,0,0,.08)" aria-label="Menu"> <i data-lucide="menu" style="width:22px;height:22px;color:var(--c-text)"></i> </button> <!-- Language Switch Button --> <button class="lang-switch-btn" id="langSwitchBtn" style="background:var(--c-surface);box-shadow:0 2px 12px rgba(0,0,0,.08)" aria-label="Language">🌐</button> <!-- Nav Overlay -->
+  <div class="app-wrap" id="app"><!-- Hamburger --> <button class="hamburger-btn" id="menuBtn" style="background:var(--c-surface);box-shadow:0 2px 12px rgba(0,0,0,.08)" aria-label="Menu"> <i data-lucide="menu" style="width:22px;height:22px;color:var(--c-text)"></i> </button> <!-- Language Switch Button --> <button class="lang-switch-btn" id="langSwitchBtn" style="background:var(--c-surface);box-shadow:0 2px 12px rgba(0,0,0,.08)" aria-label="Language">🌐</button> <!-- Nav Overlay -->
    <div class="nav-overlay" id="navOverlay"></div><!-- Side Navigation -->
    <nav class="side-nav" id="sideNav" style="background:var(--c-surface)">
     <div style="padding:20px">
-     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
-      <span style="font-weight:700;font-size:18px" data-t="nav_title">القائمة</span> <button onclick="closeNav()" style="background:none;border:none;cursor:pointer"><i data-lucide="x" style="width:20px;height:20px"></i></button>
+     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px"><span style="font-weight:700;font-size:18px" data-t="nav_title">القائمة</span> <button onclick="closeNav()" style="background:none;border:none;cursor:pointer"><i data-lucide="x" style="width:20px;height:20px"></i></button>
      </div>
      <div id="navLinks"></div>
     </div>
@@ -61,8 +61,7 @@ body{font-family:'DM Sans','Tajawal',sans-serif}
    <div class="nav-overlay" id="langOverlay"></div>
    <div class="side-nav" id="langPanel" style="background:var(--c-surface)">
     <div style="padding:20px">
-     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
-      <span style="font-weight:700;font-size:18px">🌐 Language</span> <button onclick="closeLang()" style="background:none;border:none;cursor:pointer"><i data-lucide="x" style="width:20px;height:20px"></i></button>
+     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px"><span style="font-weight:700;font-size:18px">🌐 Language</span> <button onclick="closeLang()" style="background:none;border:none;cursor:pointer"><i data-lucide="x" style="width:20px;height:20px"></i></button>
      </div>
      <div class="lang-grid" id="langGrid"></div>
     </div>
@@ -86,6 +85,7 @@ dir:"rtl", label:"العربية", flag:"🇸🇦",
 nav_title:"القائمة",
 objective:"الهدف الوظيفي",
 certifications:"الشهادات المهنية",
+trainings:"البرامج التدريبية",
 education:"الشهادات العلمية",
 experience:"الخبرات العملية",
 skills:"المهارات",
@@ -119,6 +119,67 @@ skill_items:[
 {n:"بناء الشراكات والعلاقات الرسمية",v:96},
 {n:"تحليل المواقف التعليمية",v:97},
 {n:"توظيف أفضل الممارسات",v:95}
+],
+training_items:[
+{title:"مهارتي تدريس القراءة والكتابة للإنجليزية",org:"إدارة التدريب بالرياض",date:"2008/11/30",hours:"12 ساعة"},
+{title:"الإبداع والتفكير الإبداعي",org:"إدارة التدريب بالرياض",date:"2009/03/07",hours:"12 ساعة"},
+{title:"الإيجابية في البيئة المدرسية",org:"إدارة التدريب بالرياض",date:"2009/03/14",hours:"12 ساعة"},
+{title:"أساسيات في التفكير",org:"إدارة التدريب بالرياض",date:"2009/07/11",hours:"12 ساعة"},
+{title:"مهارات السلوك الإداري",org:"إدارة التدريب بالرياض",date:"2009/07/17",hours:"12 ساعة"},
+{title:"قياس كفاءة التدريس",org:"إدارة التدريب بالرياض",date:"2009/11/07",hours:"8 ساعات"},
+{title:"مهارات إعداد التقارير",org:"إدارة التدريب بالرياض",date:"2010/02/06",hours:"12 ساعة"},
+{title:"الحوار الفعال",org:"إدارة التدريب بالرياض",date:"2010/03/05",hours:"12 ساعة"},
+{title:"قيادة عمليات التدريب ( أسس ومهارات )",org:"إدارة التدريب بالرياض",date:"2010/06/18",hours:"12 ساعة"},
+{title:"إدارة العمليات العقلية لتعليم ممتع",org:"إدارة التدريب بالرياض",date:"2011/02/01",hours:"12 ساعة"},
+{title:"استراتيجيات تعليم قواعد اللغة الإنجليزية",org:"إدارة التدريب بالرياض",date:"2011/04/22",hours:"12 ساعة"},
+{title:"مهارات النجاح القيادي",org:"إدارة التدريب بالرياض",date:"2011/10/14",hours:"12 ساعة"},
+{title:"التخطيط الاستراتيجي",org:"إدارة التدريب بالرياض",date:"2011/11/26",hours:"12 ساعة"},
+{title:"فن اكتساب لغة جديدة",org:"إدارة التدريب بالرياض",date:"2012/02/26",hours:"12 ساعة"},
+{title:"تقنية مواجهة الضغوط",org:"إدارة التدريب بالرياض",date:"2012/05/05",hours:"12 ساعة"},
+{title:"قيادة عمليات التدريب ( أنماط وأساليب )",org:"إدارة التدريب بالرياض",date:"2012/05/19",hours:"12 ساعة"},
+{title:"تريز لحل المشكلات بطرق إبداعية",org:"إدارة التدريب بالرياض",date:"2012/11/15",hours:"12 ساعة"},
+{title:"إدارة التغيير",org:"إدارة التدريب بالرياض",date:"2012/12/15",hours:"12 ساعة"},
+{title:"التصميم الرقمي للمقررات المدرسية",org:"إدارة التدريب بالرياض",date:"2013/05/11",hours:"12 ساعة"},
+{title:"الإبداع الناقد في تدريس اللغة الإنجليزية",org:"إدارة التدريب بالرياض",date:"2017/12/17",hours:"10 ساعات"},
+{title:"مفاهيم ونظريات في القيادة التربوية",org:"المركز الوطني للتطوير",date:"2019/07/21",hours:"12 ساعة"},
+{title:"الإشراف التربوي - الدعم الشخصي والتوجيه",org:"المركز الوطني للتطوير",date:"2019/07/28",hours:"12 ساعة"},
+{title:"ورشة عمل استخدام الجوال في توثيق الأعمال",org:"إدارة التدريب بالرياض",date:"2019/09/17",hours:"4 ساعات"},
+{title:"إثارة الدافعية لدراسة اللغة الإنجليزية عن بعد",org:"إدارة التدريب بالرياض",date:"2020/04/06",hours:"4 ساعات"},
+{title:"لائحة الوظائف التعليمية",org:"معهد جدة الإقليمي",date:"2020/06/13",hours:"15 ساعة"},
+{title:"التدريب على برنامج ( مايكروسوفت تيمز )",org:"إدارة التدريب بالرياض",date:"2020/09/14",hours:"3 ساعات"},
+{title:"حل المشكلات واتخاذ القرارات الفعالة",org:"إدارة التدريب بالرياض",date:"2021/04/04",hours:"6 ساعات"},
+{title:"مهارات الإشراف التربوي",org:"إدارة التدريب بالرياض",date:"2021/04/06",hours:"6 ساعات"},
+{title:"معايير وتطبيقات اختبارات الرخصة المهنية",org:"إدارة التدريب بالرياض",date:"2021/04/13",hours:"6 ساعات"},
+{title:"البيئة الصفية",org:"إدارة التدريب بالرياض",date:"2021/04/18",hours:"6 ساعات"},
+{title:"إدارة السياحة",org:"معهد الإدارة (إثرائي)",date:"2021/04/21",hours:"0.6 ساعة"},
+{title:"التواصل الذكي",org:"إدارة التدريب بالرياض",date:"2021/04/27",hours:"6 ساعات"},
+{title:"الذكاء الاجتماعي في التعليم",org:"إدارة التدريب بالرياض",date:"2021/05/02",hours:"6 ساعات"},
+{title:"التخطيط التشغيلي",org:"إدارة التدريب بالرياض",date:"2021/05/04",hours:"6 ساعات"},
+{title:"إدارة التغيير",org:"معهد الإدارة (إثرائي)",date:"2021/05/05",hours:"1.8 ساعة"},
+{title:"مهارات اتخاذ القرار الإداري",org:"إدارة التدريب بالرياض",date:"2021/05/23",hours:"6 ساعات"},
+{title:"أسرار الأنماط التفكيرية",org:"إدارة التدريب بالرياض",date:"2021/05/25",hours:"6 ساعات"},
+{title:"تحويل الأفكار إلى مشاريع",org:"إدارة التدريب بالرياض",date:"2021/05/30",hours:"6 ساعات"},
+{title:"تقنيات إبداعية في اتخاذ القرار",org:"إدارة التدريب بالرياض",date:"2021/06/01",hours:"6 ساعات"},
+{title:"التعامل مع فرط الحركة وتشتت الانتباه",org:"إدارة التدريب بالرياض",date:"2021/06/06",hours:"6 ساعات"},
+{title:"فن محادثة الجمهور",org:"إدارة التدريب بالرياض",date:"2021/06/08",hours:"6 ساعات"},
+{title:"الابتكار الحكومي",org:"معهد الإدارة (إثرائي)",date:"2021/06/15",hours:"3 ساعات"},
+{title:"منازعات التأديب",org:"معهد الإدارة (إثرائي)",date:"2021/07/27",hours:"2.5 ساعة"},
+{title:"الإبداع الإداري",org:"معهد الإدارة (إثرائي)",date:"2021/07/30",hours:"2.2 ساعة"},
+{title:"التقويم من أجل التعلم",org:"إدارة التدريب بالرياض",date:"2021/08/15",hours:"8 ساعات"},
+{title:"التدريب على إرشاد ودعم أسر الأطفال ذوي الإعاقة",org:"إدارة التدريب بالرياض",date:"2021/08/22",hours:"8 ساعات"},
+{title:"طرق التفكير الناقد",org:"إدارة التدريب بالرياض",date:"2021/08/24",hours:"8 ساعات"},
+{title:"فن إدارة الوقت",org:"إدارة التدريب بالرياض",date:"2021/09/26",hours:"8 ساعات"},
+{title:"الإبداع الجاد فن ومهارات",org:"إدارة التدريب بالرياض",date:"2021/09/28",hours:"8 ساعات"},
+{title:"التوازن بين العمل والحياة",org:"إدارة التدريب بالرياض",date:"2021/10/26",hours:"8 ساعات"},
+{title:"المهارات النفسية للتعامل مع الخجل",org:"إدارة التدريب بالرياض",date:"2021/10/31",hours:"8 ساعات"},
+{title:"أساسيات الجودة والتقويم والاعتماد",org:"هيئة تقويم التعليم والتدريب",date:"2023/11/04",hours:"25 ساعة"},
+{title:"المدقق الرئيسي لإدارة الجودة أيزو 9001",org:"مركز مقياس التعلم",date:"2023/11/12",hours:"15 ساعة"},
+{title:"مؤشرات قياس الأداء وبطاقة الأداء المتوازن",org:"مركز محبرة للتدريب",date:"2024/02/26",hours:"15 ساعة"},
+{title:"الذكاء العاطفي في بيئة العمل",org:"إدارة التدريب بالرياض",date:"2026/04/26",hours:"6 ساعات"},
+{title:"التفكير الإبداعي والابتكار",org:"إدارة التدريب بالرياض",date:"2026/05/10",hours:"6 ساعات"},
+{title:"مهارات القيادة الفعالة",org:"إدارة التدريب بالرياض",date:"2026/05/13",hours:"6 ساعات"},
+{title:"إدارة المشاريع الاحترافية (مقدمة)",org:"إدارة التدريب بالرياض",date:"2026/05/17",hours:"6 ساعات"},
+{title:"التميز في خدمة العملاء",org:"إدارة التدريب بالرياض",date:"2026/05/20",hours:"6 ساعات"}
 ]
 },
 en: {
@@ -126,6 +187,7 @@ dir:"ltr", label:"English", flag:"🇬🇧",
 nav_title:"Menu",
 objective:"Career Objective",
 certifications:"Professional Certifications",
+trainings:"Training Programs",
 education:"Education",
 experience:"Work Experience",
 skills:"Skills",
@@ -166,6 +228,7 @@ dir:"ltr", label:"Français", flag:"🇫🇷",
 nav_title:"Menu",
 objective:"Objectif professionnel",
 certifications:"Certifications professionnelles",
+trainings:"Programmes de Formation",
 education:"Formation",
 experience:"Expérience professionnelle",
 skills:"Compétences",
@@ -206,6 +269,7 @@ dir:"ltr", label:"Español", flag:"🇪🇸",
 nav_title:"Menú",
 objective:"Objetivo profesional",
 certifications:"Certificaciones profesionales",
+trainings:"Programas de Capacitación",
 education:"Educación",
 experience:"Experiencia laboral",
 skills:"Habilidades",
@@ -246,6 +310,7 @@ dir:"ltr", label:"Deutsch", flag:"🇩🇪",
 nav_title:"Menü",
 objective:"Berufsziel",
 certifications:"Berufliche Zertifizierungen",
+trainings:"Schulungsprogramme",
 education:"Bildung",
 experience:"Berufserfahrung",
 skills:"Fähigkeiten",
@@ -286,6 +351,7 @@ dir:"ltr", label:"中文", flag:"🇨🇳",
 nav_title:"菜单",
 objective:"职业目标",
 certifications:"专业认证",
+trainings:"培训课程",
 education:"教育背景",
 experience:"工作经验",
 skills:"技能",
@@ -326,6 +392,7 @@ dir:"ltr", label:"日本語", flag:"🇯🇵",
 nav_title:"メニュー",
 objective:"キャリア目標",
 certifications:"専門資格",
+trainings:"研修プログラム",
 education:"学歴",
 experience:"職歴",
 skills:"スキル",
@@ -366,6 +433,7 @@ dir:"ltr", label:"한국어", flag:"🇰🇷",
 nav_title:"메뉴",
 objective:"경력 목표",
 certifications:"전문 자격증",
+trainings:"교육 프로그램",
 education:"학력",
 experience:"경력",
 skills:"기술",
@@ -406,6 +474,7 @@ dir:"ltr", label:"Türkçe", flag:"🇹🇷",
 nav_title:"Menü",
 objective:"Kariyer Hedefi",
 certifications:"Mesleki Sertifikalar",
+trainings:"Eğitim Programları",
 education:"Eğitim",
 experience:"İş Deneyimi",
 skills:"Beceriler",
@@ -446,6 +515,7 @@ dir:"ltr", label:"Português", flag:"🇧🇷",
 nav_title:"Menu",
 objective:"Objetivo profissional",
 certifications:"Certificações profissionais",
+trainings:"Programas de Treinamento",
 education:"Educação",
 experience:"Experiência profissional",
 skills:"Habilidades",
@@ -486,6 +556,7 @@ dir:"ltr", label:"Русский", flag:"🇷🇺",
 nav_title:"Меню",
 objective:"Карьерная цель",
 certifications:"Профессиональные сертификаты",
+trainings:"Программы обучения",
 education:"Образование",
 experience:"Опыт работы",
 skills:"Навыки",
@@ -765,8 +836,8 @@ skill_items:[
 
 // ===== STATE =====
 let currentLang = 'ar';
-const sections = ['objective','certifications','education','experience','skills','contact'];
-const sectionIcons = {objective:'target',certifications:'award',education:'graduation-cap',experience:'briefcase',skills:'bar-chart-2',contact:'mail'};
+const sections = ['objective','certifications','trainings','education','experience','skills','contact'];
+const sectionIcons = {objective:'target',certifications:'award',trainings:'book-open',education:'graduation-cap',experience:'briefcase',skills:'bar-chart-2',contact:'mail'};
 
 const defaultConfig = {
   person_name: 'ماجد علي سعيد أبوراس',
@@ -864,6 +935,14 @@ function renderPage() {
     html += `<div class="cert-chip"><i data-lucide="check-circle" style="width:14px;height:14px;color:var(--c-primary)"></i><div><div style="font-weight:600">${c.t}</div><div style="font-size:11px;opacity:.6">${c.s}</div></div></div>`;
   });
   html += `</div></section>`;
+
+  // Trainings
+  html += `<section id="sec-trainings" class="section-card fade-in"><h2 style="font-size:20px;font-weight:700;margin:0 0 16px;display:flex;align-items:center;gap:8px"><i data-lucide="book-open" style="width:22px;height:22px;color:var(--c-primary)"></i>${L.trainings}</h2><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr style="background:linear-gradient(135deg, var(--c-primary), var(--c-primary)80);color:#fff;"><th style="text-align:right;padding:12px;font-weight:700;">م</th><th style="text-align:right;padding:12px;font-weight:700;">اسم البرنامج التدريبي</th><th style="text-align:right;padding:12px;font-weight:700;">جهة التدريب</th><th style="text-align:right;padding:12px;font-weight:700;">التاريخ</th><th style="text-align:right;padding:12px;font-weight:700;">عدد الساعات</th></tr></thead><tbody>`;
+  L.training_items.forEach((t,i) => {
+    const even = i%2===0;
+    html += `<tr style="border-bottom:1px solid #e8ecf0;background:${even?'#f9fafc':'transparent'};transition:background .2s"><td style="padding:12px;text-align:right;font-weight:600;color:var(--c-primary)">${i+1}</td><td style="padding:12px;text-align:right;font-weight:500">${t.title}</td><td style="padding:12px;text-align:right;font-size:12px;color:#64748b">${t.org}</td><td style="padding:12px;text-align:right;font-size:12px;color:#64748b">${t.date}</td><td style="padding:12px;text-align:right;background:var(--c-primary)15;color:var(--c-primary);border-radius:6px;font-weight:600">${t.hours}</td></tr>`;
+  });
+  html += `</tbody></table></div></section>`;
 
   // Education
   html += `<section id="sec-education" class="section-card fade-in"><h2 style="font-size:20px;font-weight:700;margin:0 0 16px;display:flex;align-items:center;gap:8px"><i data-lucide="graduation-cap" style="width:22px;height:22px;color:var(--c-primary)"></i>${L.education}</h2>`;
@@ -965,5 +1044,5 @@ if(window.elementSdk) {
 buildLangGrid();
 renderPage();
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f0313f626194dfe',t:'MTc3Njg0NDY1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fc9a48cc4542cfb',t:'MTc3ODkyNjc1My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
